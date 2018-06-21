@@ -221,7 +221,7 @@ public class ProductInsertDao {
 	public ArrayList<CateSmall> productSmallCate(Connection conn, String cateBig) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<CateSmall>list = null;
+		ArrayList<CateSmall>list = new ArrayList<CateSmall>();
 		
 		String query = "select product_category_sub_name,product_category_sub_id from product_category_sub_tb where product_cate_sub_main_id_fk = ?";
 		try {
@@ -229,14 +229,12 @@ public class ProductInsertDao {
 			pstmt.setString(1, cateBig);
 			rset = pstmt.executeQuery();
 			
-			list = new ArrayList<CateSmall>();
+		
 			while(rset.next()) {
 				CateSmall cs = new CateSmall();
 				cs.setProductCategorySubId(rset.getString("PRODUCT_CATEGORY_SUB_ID"));
 				cs.setProductCategorySubName(rset.getString("PRODUCT_CATEGORY_SUB_NAME"));
 				list.add(cs);
-				System.out.println(cs.getProductCategorySubId());
-				System.out.println(cs.getProductCategorySubName());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

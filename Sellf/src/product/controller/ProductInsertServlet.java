@@ -191,7 +191,8 @@ public class ProductInsertServlet extends HttpServlet {
 			pi.setProductDetail(productDetail);
 			
 			
-			int result = 0;
+			
+			
 			result = new ProductInsertService().productInsert(pi);
 			System.out.println("결과"+result);
 		if(result > 0) {

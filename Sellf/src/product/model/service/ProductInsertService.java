@@ -90,7 +90,6 @@ public class ProductInsertService {
 
 	public ArrayList<CateSmall> productSmallCate(String cateBig) {
 		Connection conn = JDBCTemplate.getConnection();
-		System.out.println("넘어온값"+cateBig);
 		
 		ArrayList<CateSmall>list = new ProductInsertDao().productSmallCate(conn,cateBig);
 		
