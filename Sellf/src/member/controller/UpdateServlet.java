@@ -12,14 +12,14 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class updateServlet
  */
-@WebServlet(name = "update", urlPatterns = { "/update" })
-public class updateServlet extends HttpServlet {
+@WebServlet(name = "Update", urlPatterns = { "/update" })
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateServlet() {
+    public UpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,7 @@ public class updateServlet extends HttpServlet {
 		Member m = new Member();
 		m.setUser_id(request.getParameter("userId"));
 		m.setUser_email(request.getParameter("email"));
-		m.setUser_phone(request.getParameter("userPhone"));
+		m.setUser_phone(request.getParameter("phone"));
 		m.setUser_addr((Integer.parseInt(request.getParameter("postNum"))+(request.getParameter("addrInfo"))+(request.getParameter("addrDetail"))));
 		String [] inter = request.getParameterValues("userInter");
 		String interStr = "";
@@ -43,7 +43,7 @@ public class updateServlet extends HttpServlet {
 		}
 		m.setUser_interest(interStr);
 		
-	int result = new MemberService().updateMember(m);
+	int result = 0;//new MemberService().updateMember(m);
 	if(result>0)
 	{
 		response.sendRedirect("/views/member/myInfo.jsp");
